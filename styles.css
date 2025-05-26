@@ -1,0 +1,46 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+.splash {
+  background-color: #FFF5E1;
+  background-image: url('olas.png');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+  animation: fadeOut 1s ease 3s forwards;
+}
+
+.logo {
+  width: 500px;
+}
+
+.eslogan {
+  color: #8B2F23;
+  margin-top: 20px;
+  font-size: 50px;
+  font-family: 'Bitter', serif;
+   /* Contorno negro */
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.contenido {
+  padding: 30px;
+}
