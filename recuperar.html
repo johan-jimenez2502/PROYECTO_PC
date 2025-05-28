@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recuperar Contraseña - La Migaja</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_DOMINIO.firebaseapp.com",
+      projectId: "TU_ID",
+      appId: "TU_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+</head>
+<body>
+  <div class="contenido">
+    <h2>Recuperar contraseña</h2>
+    <form id="recuperarForm">
+      <input type="email" id="correo" placeholder="Correo electrónico" required>
+      <button type="submit">Enviar enlace</button>
+    </form>
+    <p><a href="login.html">Volver al login</a></p>
+  </div>
+
+  <script>
+    document.getElementById("recuperarForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("correo").value;
+
+      auth.sendPasswordResetEmail(email)
+        .then(() => {
+          alert("¡Correo de recuperación enviado!");
+        })
+        .catch(error => {
+          alert("Error: " + error.message);
+        });
+    });
+  </script>
+</body>
+</html>

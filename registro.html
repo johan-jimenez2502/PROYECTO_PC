@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro - La Migaja</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_DOMINIO.firebaseapp.com",
+      projectId: "TU_ID",
+      appId: "TU_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+</head>
+<body>
+  <div class="contenido">
+    <h2>Registro</h2>
+    <form id="registroForm">
+      <input type="email" id="correo" placeholder="Correo electrónico" required>
+      <input type="password" id="clave" placeholder="Contraseña" required>
+      <button type="submit">Registrarse</button>
+    </form>
+    <p><a href="login.html">¿Ya tienes una cuenta? Inicia sesión</a></p>
+  </div>
+
+  <script>
+    document.getElementById("registroForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("correo").value;
+      const password = document.getElementById("clave").value;
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("¡Cuenta creada exitosamente!");
+          window.location.href = "login.html";
+        })
+        .catch(error => {
+          alert("Error: " + error.message);
+        });
+    });
+  </script>
+</body>
+</html>
